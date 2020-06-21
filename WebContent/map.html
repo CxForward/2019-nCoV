@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>国内外新型冠状病毒肺炎疫情数据</title>
+		<link rel="shortcut icon" href="image/yq.png" type="image/x-icon" />
+		<!-- 
+DNS数据
+charts.js
+script src="https://www.echartsjs.com/examples/vendors/echarts/echarts.min.js?_v_=1578305236132"></script>
+china.js
+ <script src="https://www.echartsjs.com/examples/vendors/echarts/map/js/china.js?_v_=1578305236132"></script>
+ -->
+		<script type="text/javascript" src="js/echarts.min.js"></script>
+		<!-- 地图数据 -->
+		<script type="text/javascript" src="js/map/china.js"></script>
+		<script type="text/javascript" src="js/map/world.js"></script>
+		<script type="text/javascript" src="js/map/nameMap.js"></script>
+		<script src="https://how2j.cn/study/jquery.min.js"></script>
+		<script src="https://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+		<link href="css/map.css" rel="stylesheet">
+
+	</head>
+
+	<body>
+		<div id="all">
+			<div>
+				<img alt="" id="head_img" src="image/top.jpg">
+			</div>
+			<div class="line">
+				<div class="title">国外疫情</div>
+				<div class="src">更新：&nbsp;<span id="update_foregin"></span></div>
+				<div class="src" id="text1"></div>
+			</div>
+			<div class="show_data">
+				<div class="data">
+					<div class="data_number" id="gconfirmedCount" style="color: #F55253;"></div>
+					<div class="data_text">累计确诊</div>
+					<div class="add">
+						昨日
+						<span style="color: #F55253;" id="add_gconfirmedCount"></span>
+					</div>
+				</div>
+				<div class="data">
+					<div class="data_number" id="gcurrentConfirmedCount" style="color: #cc0000;"></div>
+					<div class="data_text">现存确诊</div>
+					<div class="add">
+						昨日
+						<span style="color: #cc0000;" id="add_gcurrentConfirmedCount"></span>
+					</div>
+				</div>
+				<div class="data">
+					<div class="data_number" id="gcuredCount" style="color: #178B50;"></div>
+					<div class="data_text">累计治愈</div>
+					<div class="add">
+						昨日
+						<span style="color: #178B50;" id="add_gcuredCount"></span>
+					</div>
+				</div>
+				<div class="data">
+					<div class="data_number" id="gdeadCount" style="color:grey ;"></div>
+					<div class="data_text">累计死亡</div>
+					<div class="add">
+						昨日
+						<span style="color: grey;" id="add_gdeadCount"></span>
+					</div>
+				</div>
+			</div>
+			<div class="line">
+				<div class="title">国内疫情</div>
+				<div class="src">更新：&nbsp;<span id="update_china"></span></div>
+			</div>
+			<div class="show_data">
+				<div class="data">
+					<div class="data_number" id="confirmedCount" style="color: #F55253;"></div>
+					<div class="data_text">累计确诊</div>
+					<div class="add">
+						昨日
+						<span style="color: #F55253;" id="add_confirmedCount"></span>
+					</div>
+				</div>
+				<div class="data">
+					<div class="data_number" id="currentConfirmedCount" style="color: #cc0000;"></div>
+					<div class="data_text">现存确诊</div>
+					<div class="add">
+						昨日
+						<span style="color: #cc0000;" id="add_currentConfirmedCount"></span>
+					</div>
+				</div>
+				<div class="data">
+					<div class="data_number" id="curedCount" style="color: #178B50;"></div>
+					<div class="data_text">累计治愈</div>
+					<div class="add">
+						昨日
+						<span style="color: #178B50;" id="add_curedCount"></span>
+					</div>
+				</div>
+				<div class="data">
+					<div class="data_number" id="deadCount" style="color:grey ;"></div>
+					<div class="data_text">累计死亡</div>
+					<div class="add">
+						昨日
+						<span style="color: grey;" id="add_deadCount"></span>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="line">
+				<div class="title">国内疫情历史（2020-02-14 ~ 至今)</div>
+			</div>
+			<div id="map-china">
+				<div id="map1" style="width: 100%;height: 100%;margin: 0 auto;"></div>
+			</div>
+			<div class="two_button">
+				<input class="button_item" id="button_item1" type="button" style="background-color: white;border:1px solid red;"
+				 value="累计确诊">
+				<input class="button_item" id="button_item2" type="button" value="现有确诊">
+				<script type="text/javascript" src="js/user/mapData.js"></script>
+			</div>
+			
+			
+			<div class="line">
+				<div class="title">国内境外输入确诊前十省市</div>
+			</div>
+			<div id="rank">
+				<div id="importTop10" style="width: 100%;height: 100%;margin: 0 auto;"></div>
+			</div>
+			
+			<div class="line">
+				<div class="title">全球疫情历史（2020-03-14 ~ 至今)</div>
+			</div>
+			<div id="map-world">
+				<div id="map2" style="width: 100%;height: 100%;margin: 0 auto;"></div>
+			
+			</div>
+			<div class="two_button">
+				<input class="button_item" id="button_item3" type="button" style="background-color: white;border:1px solid red;"
+				 value="累计确诊">
+				<input class="button_item" id="button_item4" type="button" value="现有确诊">
+				<script type="text/javascript" src="js/user/wordMapData.js"></script>
+			</div>
+			<div class="line">
+				<div class="title">昨日新增国家前十</div>
+			</div>
+			<div id="rank">
+				<div id="top10" style="width: 100%;height: 100%;margin: 0 auto;"></div>
+			</div>
+			
+			<div class="line">
+				<div class="title">全球疫情发展趋势</div>
+			</div>
+			<div id="rank">
+				<div id="globalHistory" style="width: 100%;height: 100%;margin: 0 auto;"></div>
+			</div>
+			<div class="line">
+				<div class="title">全球治愈/死亡率</div>
+			</div>
+			<div id="rank">
+				<div id="rate" style="width: 100%;height: 100%;margin: 0 auto;"></div>
+			</div>
+			
+			<script type="text/javascript" src="js/user/currData.js"></script>
+			
+			
+		</div>
+
+
+
+	</body>
+
+</html>

@@ -1,0 +1,110 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+	color: grey;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+#head_img {
+	width: 100%
+}
+
+#all {
+	position: relative;
+	margin: 0 auto;
+	width: 100%;
+	
+}
+
+.line {
+	margin-top: 20px;
+	line-height: 25px;
+	width: 100%;
+}
+
+.line .title {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.line .src {
+	color: grey;
+}
+
+.show_data {
+	background-color: #E2E2E2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+	padding: 10px 0 10px 0;
+	width: 100%;
+}
+
+.data {
+	width: 120px;
+	position: relative;
+	text-align: center;
+}
+
+.data .data_number {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.data .data_text {
+	font-size: 14px;
+}
+
+.data .add {
+	padding: 5px 0 0 0;
+	font-size: 12px;
+}
+
+.two_button {
+	margin-top: 15px;
+	text-align: center;
+	font-size: 12px;
+}
+
+.button_item {
+	outline: none;
+	width: 65px;
+	height: 30px;
+	margin-right: 45px;
+	background-color: #eee;
+}
+
+#map-china {
+	position: relative;
+	margin: 0 auto;
+	height: 500px;
+	width: 800px;
+}
+#map-world {
+	position: relative;
+	margin: 0 auto;
+	height: 500px;
+	width: 800px;
+}
+#rank{
+	position: relative;
+	margin: 0 auto;
+	height: 350px;
+	width: 650px;
+}
+body{
+	background-color: #F8F9FA;
+	transform: scale(1.0);
+	margin: 0 auto;
+	width: 1000px;
+}
