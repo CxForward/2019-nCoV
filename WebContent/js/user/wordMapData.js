@@ -36,21 +36,35 @@ var gsum = [];
 
 $.when(
 	$(function() {
-		$.each(getBetweenDateStr('2020-03-14', currDate()), function(j, value) {
 			$.ajax({
-				url: "DataApi?method=selectByForeginDate&date=" + value,
+				url: "DataApi?method=selectByForeginDate",
 				dataType: "json",
 				cache: false,
 				async: false,
 				type: "get",
 				success: function(res, status) {
-					if (res.nationList[0] == null) {
+					
+					$.each(res,function(i,e){
+						const currProvince = [];
+						const currData1 = [];
+						const currData2 = [];
+						$.each(e,function(j,v){
+							currProvince.push(v.provinceName);
+							currData1.push(v.confirmedCount);
+							currData2.push(v.currentConfirmedCount);
+						});
+						nation.push(currProvince);
+						gdata1.push(currData1);
+						gdata2.push(currData2);
+					});
+					
+					
+				/*	if (res.nationList[0] == null) {
 						console.log(value + '国外数据未更新');
 					} else {
 						const currProvince = [];
 						const currData1 = [];
 						const currData2 = [];
-						gdays.push(value);
 						const nationList = res.nationList;
 						$.each(nationList, function(i, v) {
 							currProvince.push(v.provinceName);
@@ -60,12 +74,16 @@ $.when(
 						nation.push(currProvince);
 						gdata1.push(currData1);
 						gdata2.push(currData2);
-					}
+					}*/
 				}
 			});
-		})
+		
+		
 	})
 ).then(function() {
+	$.each(getBetweenDateStr('2020-06-15', currDate()), function(j, value) {
+		gdays.push(value);
+	});
 	var gs = setTimeout(showMap3, 100);
 })
 
@@ -90,7 +108,7 @@ var goption = {
 			// loop: false,
 			autoPlay: true,
 			playInterval: 1000,
-			symbolSize: 12,
+			symbolSize: 10,
 			//	symbol: 'circle',//时间长轴的形式
 			checkpointStyle: {
 				symbol: 'circle' //时间轴上移动时的亮的标记形状
@@ -102,13 +120,13 @@ var goption = {
 			lineStyle: {
 				opacity: 0.4,
 			},
-			left: '2%',
-			right: '2%',
+			left: '5%',
+			right: '5%',
 			bottom: '0%',
 			width: '85%',
 			label: {
 				fontSize: 12,
-				interval: 15
+				interval: gdays.length > 60 ? (gdays.length>120?25:15) : 8
 			},
 			// controlStyle: {
 			//     position: 'left'

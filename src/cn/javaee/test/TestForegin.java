@@ -43,7 +43,7 @@ public class TestForegin {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		String now = df.format(new Date());
 		TestForegin t = new TestForegin();
-		String[] dates = new String[]{"2020-06-10","2020-06-11","2020-06-12"};
+		String[] dates = new String[]{"2020-07-24"};
 		for (String string : dates) {
 			System.out.println(string);
 			web.insertByDate(string);

@@ -1,7 +1,9 @@
 package cn.javaee.test;
 
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,9 +41,10 @@ public class TestChina {
 	}
 
 	public static void main(String[] args) {
+
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
-		String[] dates = new String[]{"2020-06-10","2020-06-11","2020-06-12"};
+		String[] dates = new String[]{"2020-07-24"};
 		for (String string : dates) {
 			System.out.println(string);
 			web.insertByDate(string);

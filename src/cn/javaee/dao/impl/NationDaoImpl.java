@@ -44,7 +44,7 @@ public class NationDaoImpl implements NationDao{
 	@Override
 	public List<Nation> selectByDate(String date) {
 		String sql = "select provinceName,currentConfirmedCount,confirmedCount,date"
-				+ " from nation where date = ?";
+				+ " from nation where date = ? limit 215";
 		List<Nation> list = null;
 		ResultSetHandler<List<Nation>> rsh = new BeanListHandler<>(
 				Nation.class);

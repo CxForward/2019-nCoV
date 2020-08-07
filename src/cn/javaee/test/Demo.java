@@ -1,13 +1,13 @@
 package cn.javaee.test;
 
-import java.awt.image.RescaleOp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -33,11 +33,15 @@ public class Demo {
 		System.out.println(res);
 	}
 	public static void main(String[] args) throws ServletException, IOException {
-		Demo d = new Demo();
-		HttpServletRequest request = null;
-		HttpServletResponse response =null;
-		//d.resChinaData(request, response);
-		d.resTianForeginDate(request, response);
+		List list = new ArrayList();
+		list.add(1);
+		list.add(3);
+		list.add(9);
+		list.add(2);
+		list.add(5);
+		list.add(2);
+		list.add(1);
+		System.out.println(list);
 	}
 	
 	public String requestUrl(String httpUrl, String httpArg) {

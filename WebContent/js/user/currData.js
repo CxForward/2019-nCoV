@@ -11,7 +11,7 @@ $.when(
 		dataType: "json",
 		cache: false,
 		success: function(data) {
-			console.log("海外数据获取成功")
+			//console.log("海外数据获取成功")
 			foreginData = data.data;
 			let res = data.data;
 			res = res.globalStatis;
@@ -32,7 +32,7 @@ $.when(
 		dataType: "json",
 		cache: false,
 		success: function(data) {
-			console.log("国内数据获取成功");
+			//console.log("国内数据获取成功");
 			chinaData = data.data;
 			var res = data.data;
 			$(".line .src #update_china").text(res.lastUpdateTime);

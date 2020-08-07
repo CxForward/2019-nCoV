@@ -34,6 +34,10 @@ var data1 = [];
 var data2 = [];
 var sum = [];
 
+
+
+
+
 function getBetweenDateStr(start, end) {
 	var result = [];
 	var beginDay = start.split("-");
@@ -76,41 +80,36 @@ function currDate() {
 //ajax异步请求
 $.when(
 	$(function() {
-
-		$.each(getBetweenDateStr('2020-02-14', currDate()), function(j, value) {
 			$.ajax({
-				url: "DataApi?method=selectByDate&date=" + value,
+				url: "DataApi?method=selectByDate",
 				dataType: "json",
 				cache: false,
 				async: false,
 				type: "get",
 				success: function(res, status) {
-					if (res.provinceList[0] == null) {
-						console.log(value + '数据未更新');
-					} else {
+					
+					$.each(res,function(i,e){
 						const currProvince = [];
 						const currData1 = [];
 						const currData2 = [];
-						days.push(value);
-						for (var i = 0; i < 34; i++) {
-							currProvince.push(res.provinceList[i].provinceShortName);
-							currData1.push(res.provinceList[i].confirmedCount);
-							currData2.push(res.provinceList[i].currentConfirmedCount);
-						}
-						//console.log(value);
+						$.each(e,function(j,v){
+							currProvince.push(v.provinceShortName);
+							currData1.push(v.confirmedCount);
+							currData2.push(v.currentConfirmedCount);
+						});
 						province.push(currProvince);
 						data1.push(currData1);
 						data2.push(currData2);
-						//JSON.stringify(res); //返回内容绑定到ID为result的标签
-					}
-
+					});
 				}
 			});
-
-		})
 	})
 
 ).then(function() {
+	$.each(getBetweenDateStr('2020-06-15', currDate()), function(j, value) {
+		days.push(value);
+		
+	});
 	var s = setTimeout(showMap1, 100);
 })
 
@@ -133,7 +132,7 @@ var option = {
 			// loop: false,
 			autoPlay: true,
 			playInterval: 2000,
-			symbolSize: 12,
+			symbolSize: 10,
 			//	symbol: 'circle',//时间长轴的形式
 			checkpointStyle: {
 				symbol: 'circle' //时间轴上移动时的亮的标记形状
@@ -144,13 +143,13 @@ var option = {
 			lineStyle: {
 				opacity: 0.4,
 			},
-			left: '2%',
-			right: '2%',
+			left: '5%',
+			right: '5%',
 			bottom: '0%',
 			width: '85%',
 			label: {
 				fontSize: 12,
-				interval: 15,
+				interval: days.length > 60 ? (days.length>120?25:15) : 8
 			},
 			// controlStyle: {
 			//     position: 'left'

@@ -9,7 +9,7 @@
 		<listener-class>cn.javaee.servletListener.StatisticsContextListener</listener-class>
 	</listener>
 	<welcome-file-list>
-		<welcome-file>map.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
 	<filter>
