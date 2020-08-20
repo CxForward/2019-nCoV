@@ -70,10 +70,12 @@ public class DataApi extends BaseServlet {
 			list2 = nw.selectByDate(date);
 			//判断能否获取到date的数据，能获取才进行移除和添加操作
 			if (list1 != null && list1.size() > 0) {
+				System.out.println("更新list国内数据");
 				chinaList.remove(chinaList.size() - 1);
 				chinaList.add(list1);
 			}
 			if (list2 != null && list2.size() > 0) {
+				System.out.println("更新list国外数据");
 				foreginList.remove(foreginList.size() - 1);
 				foreginList.add(list2);
 			}

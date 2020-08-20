@@ -44,7 +44,7 @@ public class TestChina {
 
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
-		String[] dates = new String[]{"2020-07-24"};
+		String[] dates = new String[]{"2020-08-15"};
 		for (String string : dates) {
 			System.out.println(string);
 			web.insertByDate(string);
