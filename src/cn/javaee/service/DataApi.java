@@ -47,9 +47,14 @@ public class DataApi extends BaseServlet {
 			List<Province> list1 = null;
 			List<Nation> list2 = null;
 			list1 = web.selectByDate(string);
-			chinaList.add(list1);
+			if(list1 != null && list1.size()>0){
+				chinaList.add(list1);
+			}
+			
 			list2 = nw.selectByDate(string);
-			foreginList.add(list2);
+			if(list2 != null && list2.size()>0){
+				foreginList.add(list2);
+			}
 		}
 	}
 
@@ -84,8 +89,14 @@ public class DataApi extends BaseServlet {
 				date = now;
 				list1 = web.selectByDate(date);
 				list2 = nw.selectByDate(date);
-				chinaList.add(list1);
-				foreginList.add(list2);
+				if(list1!=null && list1.size()>0){
+					chinaList.add(list1);
+				}
+				if(list2!=null && list2.size()>0){
+					foreginList.add(list2);
+				}
+				
+				
 			}
 			System.out.println("123");
 		}

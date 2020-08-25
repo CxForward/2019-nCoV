@@ -33,7 +33,7 @@ var data = new Array();
 var data1 = [];
 var data2 = [];
 var sum = [];
-
+var n = 0;
 
 
 
@@ -87,8 +87,8 @@ $.when(
 				async: false,
 				type: "get",
 				success: function(res, status) {
-					
 					$.each(res,function(i,e){
+						n++;
 						const currProvince = [];
 						const currData1 = [];
 						const currData2 = [];
@@ -101,15 +101,19 @@ $.when(
 						data1.push(currData1);
 						data2.push(currData2);
 					});
+					$.each(getBetweenDateStr('2020-06-15', currDate()), function(j, value) {
+						days.push(value);
+						
+					});
+					while(days.length>n){
+						days.pop();
+					}
 				}
 			});
 	})
 
 ).then(function() {
-	$.each(getBetweenDateStr('2020-06-15', currDate()), function(j, value) {
-		days.push(value);
-		
-	});
+	
 	var s = setTimeout(showMap1, 100);
 })
 

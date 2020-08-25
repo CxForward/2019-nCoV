@@ -33,7 +33,7 @@ var gdata = new Array();
 var gdata1 = [];
 var gdata2 = [];
 var gsum = [];
-
+var m =0;
 $.when(
 	$(function() {
 			$.ajax({
@@ -43,8 +43,8 @@ $.when(
 				async: false,
 				type: "get",
 				success: function(res, status) {
-					
 					$.each(res,function(i,e){
+						m++;
 						const currProvince = [];
 						const currData1 = [];
 						const currData2 = [];
@@ -57,8 +57,13 @@ $.when(
 						gdata1.push(currData1);
 						gdata2.push(currData2);
 					});
+					$.each(getBetweenDateStr('2020-06-15', currDate()), function(j, value) {
+						gdays.push(value);
+					});
 					
-					
+					while(gdays.length>m){
+						gdays.pop();
+					}
 				/*	if (res.nationList[0] == null) {
 						console.log(value + '国外数据未更新');
 					} else {
@@ -81,9 +86,7 @@ $.when(
 		
 	})
 ).then(function() {
-	$.each(getBetweenDateStr('2020-06-15', currDate()), function(j, value) {
-		gdays.push(value);
-	});
+	
 	var gs = setTimeout(showMap3, 100);
 })
 
